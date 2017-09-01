@@ -24,4 +24,4 @@ class Comment(models.Model):
         text = self.text
         if len(text) > 20:
             text = self.text[20:]
-        return '{0} "{1}"'.format(self.author.email, text)
+        return '{0} "{1}..."'.format(self.author.email, text)

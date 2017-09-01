@@ -1,0 +1,15 @@
+{%  extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        <div>{{ post.author }} {{ post.published }}</div>
+        <div>{{ post.title }}</div>
+        <div>{{ post.content }}</div>
+    </div>
+
+    {% for comment in post.comments.all %}
+        {{ comment.text }}
+    {% endfor %}
+{% endblock content %}

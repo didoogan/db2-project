@@ -9,7 +9,11 @@
                 <tr>
 {#                    <td><a href="{% url 'books:detail_view' book.id %}" ><h4>{{ book }}</h4></a></td>#}
                     <div>{{ post.author }} {{ post.published }}</div>
-                    <div>{{ post.title }}</div>
+                    <div>
+                        <a href="{% url 'post:detail_view' post.id %}" >
+                            {{ post.title }}
+                        </a>
+                    </div>
                     <div>{{ post.content }}</div>
                 </tr>
             {% endfor %}
