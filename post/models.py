@@ -12,3 +12,16 @@ class Post(models.Model):
 
     def __str__(self):
         return '{0} "{1}"'.format(self.author.email, self.title)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               related_name='comments')
+    post = models.ForeignKey(Post, related_name='comments')
+    text = models.TextField()
+
+    def __str__(self):
+        text = self.text
+        if len(text) > 20:
+            text = self.text[20:]
+        return '{0} "{1}"'.format(self.author.email, text)
