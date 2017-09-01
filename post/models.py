@@ -11,4 +11,4 @@ class Post(models.Model):
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):
-        return '{0} {1}'.format(self.author.email, self.title)
+        return '{0} "{1}"'.format(self.author.email, self.title)

@@ -1,0 +1,21 @@
+{%  extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+        <table class="table">
+            {% for post in object_list %}
+                <tr>
+{#                    <td><a href="{% url 'books:detail_view' book.id %}" ><h4>{{ book }}</h4></a></td>#}
+                    <div>{{ post.author }} {{ post.published }}</div>
+                    <div>{{ post.title }}</div>
+                    <div>{{ post.content }}</div>
+                </tr>
+            {% endfor %}
+        </table>
+
+{#        <a href="{% url 'books:create_view' %}" class="btn btn-success btn-md" >#}
+{#        <span class="glyphicon glyphicon-plus"></span> Add new book</a>#}
+    </div>
+{% endblock content %}

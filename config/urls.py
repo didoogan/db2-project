@@ -15,6 +15,7 @@ urlpatterns = [
     # User management
     url(r'^users/', include('db2_project.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^post/', include('post.urls')),
 
     # Your stuff: custom urls includes go here
 
