@@ -36,3 +36,8 @@
 [hidden][style="display: block;"] {
   display: block !important;
 }
+
+.thumb-up {
+  color: #5BC0DE;
+  cursor: pointer;
+}

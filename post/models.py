@@ -10,6 +10,10 @@ class Post(models.Model):
     modified = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
+    @property
+    def likes_num(self):
+        return len(self.likes.all())
+
     def __str__(self):
         return '{0} "{1}"'.format(self.author.email, self.title)
 

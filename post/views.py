@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
@@ -100,7 +101,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
         return super(PostUpdateView, self).form_valid(form)
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('post:list_view')
     template_name = 'post/delete.html'
@@ -111,4 +112,15 @@ class PostDeleteView(DeleteView):
         return super(PostDeleteView, self).delete(self, request, *args,
                                                   **kwargs)
 
+
+class LikeCreateDeleteView(LoginRequiredMixin, View):
+
+    def post(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        user = request.user
+        if user in post.likes.all():
+            post.likes.remove(user)
+        else:
+            post.likes.add(user)
+        return JsonResponse({'likes': post.likes_num})
 

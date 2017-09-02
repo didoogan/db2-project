@@ -7,6 +7,12 @@
         <div>{{ post.author }} {{ post.published }}</div>
         <div>{{ post.title }}</div>
         <div>{{ post.content }}</div>
+        <i
+            class="fa fa-thumbs-up thumb-up"
+            aria-hidden="true"
+            data-id="{{ post.id }}"
+        >
+        </i> <span id="like">{{ post.likes_num }}</span>
     </div>
 
     {% if post.author == request.user %}
