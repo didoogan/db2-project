@@ -18,7 +18,33 @@
         </a>
     {% endif %}
 
-    {% for comment in post.comments.all %}
-        {{ comment.text }}
-    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="comment" class="form-control" required>
+        <input type="submit" value="Save" class="btn btn-success">
+    </form>
+
+    {% if comments %}
+        {% for comment in comments %}
+            <div><i>{{ comment.published }}</i> <b>{{ comment.author.email }}</b> has wrote:</div>
+            <div>{{ comment.text }}</div>
+        {% endfor %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if comments.has_previous %}
+                    <a href="?page={{ comments.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ comments.number }} of {{ comments.paginator.num_pages }}.
+                </span>
+
+                {% if comments.has_next %}
+                    <a href="?page={{ comments.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% else %}
+        <p>No comments</p>
+    {% endif %}
 {% endblock content %}
