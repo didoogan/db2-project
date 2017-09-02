@@ -7,7 +7,6 @@
         <table class="table">
             {% for post in object_list %}
                 <tr>
-{#                    <td><a href="{% url 'books:detail_view' book.id %}" ><h4>{{ book }}</h4></a></td>#}
                     <div>{{ post.author }} {{ post.published }}</div>
                     <div>
                         <a href="{% url 'post:detail_view' post.id %}" >
@@ -18,8 +17,23 @@
                 </tr>
             {% endfor %}
         </table>
-
-{#        <a href="{% url 'books:create_view' %}" class="btn btn-success btn-md" >#}
-{#        <span class="glyphicon glyphicon-plus"></span> Add new book</a>#}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/post?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/post?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+        <a href="{% url 'post:create_view' %}" class="btn btn-success btn-md" >
+            Add new post
+        </a>
     </div>
 {% endblock content %}

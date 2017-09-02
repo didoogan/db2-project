@@ -9,6 +9,15 @@
         <div>{{ post.content }}</div>
     </div>
 
+    {% if post.author == request.user %}
+        <a href="{% url 'post:update_view' post.pk %}" class="btn btn-success btn-md" >
+                Change post
+        </a>
+        <a href="{% url 'post:delete_view' post.pk %}" class="btn btn-success btn-md" >
+                Delete post
+        </a>
+    {% endif %}
+
     {% for comment in post.comments.all %}
         {{ comment.text }}
     {% endfor %}
