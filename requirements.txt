@@ -73,3 +73,12 @@ wcwidth==0.1.7
 Werkzeug==0.12.2
 whichcraft==0.4.1
 whitenoise==3.3.0
+
+gevent==1.2.2
+gunicorn==19.7.1
+
+boto3==1.4.7
+django-storages==1.6.5
+
+
+django-anymail==0.11.1
