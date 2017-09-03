@@ -17,6 +17,7 @@ class User(AbstractUser):
     birthday = models.DateField(null=True, blank=True)
     country = models.CharField(max_length=30, null=True, blank=True)
     city = models.CharField(max_length=30, null=True, blank=True)
+    username = models.CharField(max_length=30, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

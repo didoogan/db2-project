@@ -252,10 +252,12 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_ADAPTER = 'db2_project.users.adapters.AccountAdapter'
+ACCOUNT_ADAPTER = 'db2_project.users.views.AccountAdapter'
+# ACCOUNT_SIGNUP_FORM_CLASS = 'db2_project.users.forms.SignUpForm'
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION',
                                       True)
-ACCOUNT_ADAPTER = 'db2_project.users.adapters.AccountAdapter'
 SOCIALACCOUNT_ADAPTER = 'db2_project.users.adapters.SocialAccountAdapter'
 
 # Custom user app defaults
@@ -263,6 +265,8 @@ SOCIALACCOUNT_ADAPTER = 'db2_project.users.adapters.SocialAccountAdapter'
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'users:redirect'
 LOGIN_URL = 'account_login'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'

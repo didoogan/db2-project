@@ -199,7 +199,7 @@ DEBUG=True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'angularhero@gmail.com'
-EMAIL_HOST_PASSWORD = 'samsung789'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'tzd0409@yahoo.com'
+EMAIL_HOST_PASSWORD = 'ktrcec87'
