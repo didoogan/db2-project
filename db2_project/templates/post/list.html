@@ -28,7 +28,7 @@
             </div>
 
     {% if is_paginated %}
-        <div class="pagination paginator-ctm">
+        <div class="pagination paginator-ctm button-right">
             <span class="page-links">
                 {% if page_obj.has_previous %}
                     <a href="/post?page={{ page_obj.previous_page_number }}">previous</a>
@@ -42,8 +42,8 @@
             </span>
         </div>
     {% endif %}
-        <a href="{% url 'post:create_view' %}" class="btn btn-success btn-md" >
+        <div class="button-right"><a href="{% url 'post:create_view' %}" class="btn btn-success btn-md" >
             Add new post
-        </a>
+        </a></div>
     </div>
 {% endblock content %}

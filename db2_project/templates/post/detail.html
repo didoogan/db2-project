@@ -24,17 +24,19 @@
     </div>
 
     {% if post.author == request.user %}
-        <a href="{% url 'post:update_view' post.pk %}" class="btn btn-success btn-md" >
-                Change post
-        </a>
-        <a href="{% url 'post:delete_view' post.pk %}" class="btn btn-success btn-md" >
-                Delete post
-        </a>
+        <div class="buttons-row button-right">
+            <a href="{% url 'post:update_view' post.pk %}" class="btn btn-success btn-md" >
+                    Change post
+            </a>
+            <a href="{% url 'post:delete_view' post.pk %}" class="btn btn-success btn-md button-right" >
+                    Delete post
+            </a>
+        </div>
     {% endif %}
     <form action="" method="post">
         {% csrf_token %}
-        <textarea name="comment" class="form-control comment-textarea" required></textarea>
-        <div class="button-right"> <input type="submit" value="Save" class="btn btn-success"></div>
+        <textarea name="comment" class="form-control comment-textarea" placeholder="Your comment can be here" required></textarea>
+        <div class="button-right"> <input type="submit" value="Add comment" class="btn btn-success buttons-row"></div>
     </form>
     {% if comments %}
         <ul class="list-group">
@@ -45,7 +47,7 @@
                 </li>
             {% endfor %}
         </ul>
-        <div class="pagination">
+        <div class="pagination button-right">
             <span class="step-links">
                 {% if comments.has_previous %}
                     <a href="?page={{ comments.previous_page_number }}">previous</a>
