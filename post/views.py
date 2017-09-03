@@ -18,7 +18,7 @@ from .models import Post, Comment
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'post/list.html'
-    paginate_by = 3
+    paginate_by = 4
 
 
 # class PostDetailView(LoginRequiredMixin, DetailView):

@@ -3,16 +3,24 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div class="container">
-        <div>{{ post.author }} {{ post.published }}</div>
-        <div>{{ post.title }}</div>
-        <div>{{ post.content }}</div>
-        <i
-            class="fa fa-thumbs-up thumb-up"
-            aria-hidden="true"
-            data-id="{{ post.id }}"
-        >
-        </i> <span id="like">{{ post.likes_num }}</span>
+    <div class="card">
+      <h4 class="card-title" align="center">{{ post.title }}</h4>
+      <p class="card-text">{{ post.content }}</p>
+      <p class="card-text">
+          <small>
+              {{ post.author }}
+              <span class="text-muted"> {{ post.published }}</span>
+          </small>
+          <span class="pull-right">
+              <i
+                class="fa fa-thumbs-up thumb-up"
+                aria-hidden="true"
+                data-id="{{ post.id }}"
+              >
+              </i> <span id="like">{{ post.likes_num }}</span>
+          </span>
+      </p>
+
     </div>
 
     {% if post.author == request.user %}
@@ -23,18 +31,20 @@
                 Delete post
         </a>
     {% endif %}
-
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="comment" class="form-control" required>
-        <input type="submit" value="Save" class="btn btn-success">
+        <textarea name="comment" class="form-control comment-textarea" required></textarea>
+        <div class="button-right"> <input type="submit" value="Save" class="btn btn-success"></div>
     </form>
-
     {% if comments %}
-        {% for comment in comments %}
-            <div><i>{{ comment.published }}</i> <b>{{ comment.author.email }}</b> has wrote:</div>
-            <div>{{ comment.text }}</div>
-        {% endfor %}
+        <ul class="list-group">
+            {% for comment in comments %}
+                <li class="list-group-item comment-item">
+                    <div><small><i>{{ comment.published }}</i> <b>{{ comment.author.email }}</b> has wrote:</small></div>
+                    <div><small>{{ comment.text }}</small></div>
+                </li>
+            {% endfor %}
+        </ul>
         <div class="pagination">
             <span class="step-links">
                 {% if comments.has_previous %}

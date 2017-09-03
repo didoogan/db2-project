@@ -41,3 +41,23 @@
   color: #5BC0DE;
   cursor: pointer;
 }
+.paginator-ctm {
+  padding: 10px 0 10px 0;
+}
+.detail-card {
+  margin-bottom: 30px;
+}
+.comment-textarea {
+  margin: 30px 0 10px 0;
+}
+.button-right {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

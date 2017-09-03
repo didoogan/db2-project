@@ -14,6 +14,13 @@ class Post(models.Model):
     def likes_num(self):
         return len(self.likes.all())
 
+    @property
+    def shrinked_content(self):
+        text = self.content
+        if len(text) > 100:
+            text = self.content[:100]
+        return '{}...'.format(text)
+
     def __str__(self):
         return '{0} "{1}"'.format(self.author.email, self.title)
 
@@ -29,5 +36,5 @@ class Comment(models.Model):
     def __str__(self):
         text = self.text
         if len(text) > 20:
-            text = self.text[20:]
+            text = self.text[:20]
         return '{0} "{1}..."'.format(self.author.email, text)
